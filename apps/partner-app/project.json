@@ -1,0 +1,26 @@
+{
+  "name": "partner-app",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/partner-app",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "container": {
+      "executor": "@nx-tools/nx-container:build",
+      "dependsOn": ["build"],
+      "options": {
+        "engine": "docker",
+        "push": true,
+        "metadata": {
+          "images": ["omdenaai/partner-app"],
+          "load": true,
+          "tags": [
+            "type=schedule",
+            "type=raw,value=latest",
+            "type=sha,prefix=sha-"
+          ]
+        }
+      }
+    }
+  }
+}

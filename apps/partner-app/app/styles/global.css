@@ -1,0 +1,31 @@
+:root {
+  --global-btn-hover-color: #efefef;
+  --bs-body-bg: #f8f9fa;
+}
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+body {
+  font-feature-settings: "salt";
+  background: var(--bs-body-bg);
+}
+
+a {
+  text-decoration: none;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.global-btn {
+  border: none;
+  transition: background-color 0.2s linear;
+}
+
+.global-btn:hover {
+  background-color: var(--global-btn-hover-color);
+}

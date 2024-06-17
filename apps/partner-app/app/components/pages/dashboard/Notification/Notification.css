@@ -1,0 +1,22 @@
+.local-notification {
+  max-width: 90vw;
+  width: 80vw;
+  height: 80vh;
+  max-height: 80vh;
+}
+
+/*  Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  .local-notification {
+    max-width: 70vw;
+    width: 60vw;
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  .local-notification {
+    min-width: 450px;
+    max-width: 100%;
+  }
+}

@@ -1,0 +1,25 @@
+.local-main-container:not(:has(#navSidebar.show)) .local-dashboard-container {
+  margin-left: 0;
+  /* transition-delay: 0.2s; */
+}
+
+.local-main-container:has(#navSidebar.show) .local-nav-sidebar {
+  /* margin-left: 280px; */
+  /* transition-delay: 5s; */
+  left: 0;
+}
+
+.local-dashboard-container {
+  position: relative;
+}
+
+@media screen and (min-width: 768px) {
+  .local-dashboard-container {
+    margin-left: 280px;
+  }
+
+  /* Remove margin-left from `.local-dashboard-container` when sliding the sidebar menu out */
+  .local-main-container:not(:has(#navSidebar.show)) .local-dashboard-container {
+    margin-left: 0;
+  }
+}

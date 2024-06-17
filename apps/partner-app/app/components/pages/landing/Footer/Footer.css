@@ -1,0 +1,8 @@
+.local-footer_link {
+  color: inherit;
+}
+
+.local-footer_link:hover {
+  text-decoration: underline;
+  color: var(--bs-primary);
+}

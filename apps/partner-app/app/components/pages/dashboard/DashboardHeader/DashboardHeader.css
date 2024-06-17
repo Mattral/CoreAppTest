@@ -1,0 +1,13 @@
+.local-btn {
+  font-size: 1.25rem;
+  transition: all 0.2s linear;
+}
+
+.local-btn:hover {
+  background-color: var(--bs-gray-200);
+  transform: scale(1.08);
+}
+
+.local-btn .badge {
+  font-size: 0.75rem;
+}

@@ -1,0 +1,107 @@
+:root {
+  --sidebar-background: transparent;
+  --sidebar-color: #5b6b79;
+  --sidebar-color-rgb: 91, 107, 121;
+  --sidebar-active-color: #0d6efd;
+  --sidebar-shadow: none;
+  --sidebar-caption-color: #3e4853;
+  --sidebar-border: 1px dashed #bec8d0;
+  --sidebar-user-background: #f3f5f7;
+}
+
+.local-nav-sidebar {
+  width: 280px;
+  background: var(--bs-body-bg);
+  box-shadow: var(--sidebar-shadow);
+  border: none;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: -280px;
+  z-index: 20;
+  overflow: hidden;
+  transition: all 0.2s ease-in-out;
+}
+
+.local-mobile-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  backdrop-filter: blur(3px);
+  background: rgba(0, 0, 0, 0.15);
+}
+
+.local-hide {
+  width: 0;
+  left: -280px;
+}
+
+.local-hide::after {
+  display: none;
+}
+
+.local-navbar-wrapper {
+  width: 280px;
+  background: inherit;
+}
+
+.local-navbar-content {
+  position: relative;
+  padding: 10px 0;
+  height: calc(100vh - 74px);
+  overflow-y: auto;
+}
+
+.local-user-card {
+  box-shadow: none;
+  background: var(--sidebar-user-background);
+  margin: 0 15px 15px;
+  /* color: var(--bs-heading-color); */
+}
+
+.local-card-body {
+  padding: 20px;
+}
+
+.local-user-avatar {
+  width: 40px;
+}
+
+.local-btn-avatar {
+  width: 40px;
+  height: 40px;
+  transition: all 0.2s ease-in-out;
+  outline-color: none;
+  border: none;
+}
+
+.local-btn-avatar:hover {
+  background: rgb(255, 255, 255, 0.3);
+}
+
+.local-profile-link {
+  color: var(--sidebar-color);
+  transition: all 0.2s linear;
+}
+
+.local-profile-link:hover,
+.local-profile-link:active {
+  color: var(--sidebar-active-color);
+  letter-spacing: 0.1px;
+}
+
+@media screen and (min-width: 768px) {
+  .local-nav-sidebar {
+    border-right: var(--sidebar-border);
+    transition: width 0.2s ease;
+    background: var(--sidebar-background);
+    left: 0;
+  }
+
+  .local-mobile-overlay {
+    display: none;
+  }
+}
