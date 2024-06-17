@@ -1,0 +1,13 @@
+.global-dashboard-container {
+  transition: 0.5s;
+}
+
+@media screen and (min-width: 768px) {
+  .global-dashboard-container {
+    margin-left: var(--sidebar-width);
+  }
+
+  .global-dashboard-container.open {
+    margin-left: 0;
+  }
+}

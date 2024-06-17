@@ -1,0 +1,118 @@
+:root {
+  --sidebar-background: var(--bs-gray-100);
+  --sidebar-color: #5b6b79;
+  --sidebar-color-rgb: 91, 107, 121;
+  --sidebar-active-color: #0d6efd;
+  --sidebar-shadow: #000;
+  --sidebar-caption-color: #3e4853;
+  --sidebar-border: 1px dashed #bec8d0;
+  --sidebar-user-background: #f3f5f7;
+  --sidebar-width: 280px;
+}
+
+[data-bs-theme='dark'] .local-nav-sidebar {
+  --sidebar-background: var(--bs-gray-900);
+  --sidebar-shadow: #eee;
+}
+
+.local-nav-sidebar {
+  width: var(--sidebar-width);
+  background: var(--sidebar-background);
+  box-shadow: var(--sidebar-shadow);
+  border: none;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: calc(-1 * var(--sidebar-width));
+  z-index: 1000;
+  overflow: hidden;
+  transition: all 0.5s ease-in-out;
+  margin-left: calc(-1 * var(--sidebar-width));
+  background: var(--sidebar-background);
+}
+
+.local-nav-sidebar.open {
+  margin-left: 0;
+  box-shadow: 0 0 2px var(--sidebar-shadow);
+}
+
+.local-nav-sidebar::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  right: -1000px;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  backdrop-filter: blur(3px);
+  background: rgba(0, 0, 0, 0.15);
+  margin-right: -280px;
+  transition: all 0.5s ease-in-out;
+}
+
+.local-nav-sidebar.open::after {
+  right: 0;
+}
+
+.local-navbar-content {
+  position: relative;
+  padding: 10px 0;
+  overflow-y: auto;
+}
+
+.local-user-card {
+  box-shadow: none;
+  background: var(--sidebar-user-background);
+}
+
+.local-card-body {
+  padding: 20px;
+}
+
+.local-user-avatar {
+  width: 40px;
+}
+
+.local-btn-avatar {
+  width: 40px;
+  height: 40px;
+  transition: all 0.2s ease-in-out;
+  outline-color: none;
+  border: none;
+}
+
+.local-btn-avatar:hover {
+  background: rgb(255, 255, 255, 0.3);
+}
+
+.local-profile-link {
+  color: var(--sidebar-color);
+  transition: all 0.2s linear;
+}
+
+.local-profile-link:hover,
+.local-profile-link:active {
+  color: var(--sidebar-active-color);
+  letter-spacing: 0.1px;
+}
+
+/* ====================== */
+/* MEDIA QUERY: md(768px) */
+/* ====================== */
+@media screen and (min-width: 768px) {
+  .local-nav-sidebar {
+    /* border-right: var(--sidebar-border); */
+    box-shadow: 0 0 2px var(--sidebar-shadow);
+    margin-left: 0;
+  }
+
+  .local-nav-sidebar.open {
+    margin-left: calc(-1 * var(--sidebar-width));
+    box-shadow: none;
+  }
+
+  .local-nav-sidebar::after,
+  .local-nav-sidebar.open::after {
+    display: none;
+  }
+}

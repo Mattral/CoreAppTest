@@ -1,0 +1,30 @@
+.local-menu-nav {
+  border-radius: 8px;
+}
+
+.local-menu-nav:hover {
+  background: #e7eaec !important;
+}
+
+.local-menu-item a,
+.local-menu-item button {
+  transition: all 0.2s linear;
+}
+
+.local-menu-item .local-inner-menu-item:hover,
+.local-menu-item .local-inner-menu-link:hover {
+  color: var(--bs-link-hover-color) !important;
+  text-decoration: underline;
+  text-decoration-color: var(--bs-link-hover-color);
+  letter-spacing: 0.1px;
+}
+
+.local-menu-btn.collapsed > span i.local-chevron {
+  transform: rotate(270deg);
+}
+
+.local-menu-icon {
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+}

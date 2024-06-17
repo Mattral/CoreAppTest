@@ -1,0 +1,17 @@
+/**
+* Using a global css file for all Auth pages.
+* The styles are identical in most cases.
+*/
+
+.local-card {
+  max-width: 480px;
+  box-shadow: none;
+}
+
+.local-form-control {
+  padding: 0.8rem 0.75rem;
+}
+
+.local-btn {
+  border-radius: 20px;
+}

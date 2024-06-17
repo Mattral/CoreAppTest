@@ -1,0 +1,29 @@
+.custom-flex {
+  gap: 2rem;
+}
+
+.local-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+  gap: 2rem;
+}
+
+.local-card {
+  flex-basis: 100%;
+}
+
+/* SM */
+@media screen and (min-width: 576px) {
+  .local-card {
+    flex-basis: 47.5%;
+  }
+}
+
+/* MD */
+@media screen and (min-width: 576px) {
+  .local-card {
+    flex-basis: 30%;
+  }
+}

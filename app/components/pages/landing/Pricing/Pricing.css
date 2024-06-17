@@ -1,0 +1,4 @@
+.local-recommended-pricing {
+  border-radius: 5px;
+  background: rgba(var(--bs-primary-rgb), 0.1);
+}

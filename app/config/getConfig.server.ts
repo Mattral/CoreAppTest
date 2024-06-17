@@ -1,0 +1,25 @@
+import { defineConfig } from './defineConfig';
+import { getEnv } from './getEnv.server';
+
+export function getConfig() {
+  return defineConfig({
+    NODE_ENV: process.env.NODE_ENV,
+    COOKIE_SECRET: getEnv('COOKIE_SECRET'),
+    BASE_API_URL: getEnv('BASE_API_URL'),
+    ADMIN_COMPANY_CODE: getEnv('ADMIN_COMPANY_CODE'),
+    ADMIN_FRONTEND_KEY: getEnv('ADMIN_FRONTEND_KEY'),
+    FRONTEND_DOMAIN_NAME: getEnv('FRONTEND_DOMAIN_NAME'),
+    AWS_ACCESS_KEY: getEnv('AWS_ACCESS_KEY'),
+    AWS_SECRET_ACCESS_KEY: getEnv('AWS_SECRET_ACCESS_KEY'),
+    AWS_REGION: getEnv('AWS_REGION'),
+    EC2_INSTANCE_HOST: getEnv('EC2_INSTANCE_HOST'),
+    EC2_INSTANCE_PORT: parseInt(getEnv('EC2_INSTANCE_PORT')),
+    EC2_INSTANCE_USERNAME: getEnv('EC2_INSTANCE_USERNAME'),
+    EC2_INSTANCE_PRIVATE_KEY_PATH: getEnv('EC2_INSTANCE_PRIVATE_KEY_PATH'),
+    EC2_INSTANCE_DOCKER_SERVICE_NAME: getEnv(
+      'EC2_INSTANCE_DOCKER_SERVICE_NAME'
+    ),
+    AWS_ROUTE53_HOSTED_ZONE_ID: getEnv('AWS_ROUTE53_HOSTED_ZONE_ID'),
+    EC2_INSTANCE_IP_ADDRESS: getEnv('EC2_INSTANCE_IP_ADDRESS'),
+  });
+}
