@@ -4,7 +4,7 @@ down:
 
 # Pull new images
 pull:
-	cat ./docker_password | docker login --username yinkaenoch --password-stdin
+	cat ./docker_password | docker login --username minhtetmyet --password-stdin
 	docker compose pull
 	rm -rf docker_password
 
