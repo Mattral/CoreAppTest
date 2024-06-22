@@ -1,32 +1,66 @@
-name: Deploy to Docker Swarm
+version: '3.7'
 
-on:
-  push:
-    branches:
-      - main
+services:
+  web:
+    image: omdenaai/core-app:latest
+    ports:
+      - '3000:3000'
+    networks:
+      - loe_network
+    env_file:
+      - ./.env
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+        delay: 10s
+        max_attempts: 3
+        window: 120s
+      update_config:
+        parallelism: 1
+        delay: 10s
 
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
+  partnerapp:
+    image: omdenaai/partner-app:latest
+    ports:
+      - '4000:4000'
+    networks:
+      - loe_network
+    env_file:
+      - ./.env
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+        delay: 10s
+        max_attempts: 3
+        window: 120s
+      update_config:
+        parallelism: 1
+        delay: 10s
 
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+  reverse_proxy:
+    image: nginx:1.25.0-bullseye
+    volumes:
+      - './nginx.conf:/etc/nginx/nginx.conf'
+      - './nginx_partials:/etc/nginx/nginx_partials'
+      - './certificates:/etc/nginx/certificates'
+    ports:
+      - '80:80'
+      - '443:443'
+    networks:
+      - loe_network
+    depends_on:
+      - web
+      - partnerapp
+    deploy:
+      placement:
+        constraints: [node.role == manager]
+      replicas: 1
+      update_config:
+        parallelism: 1
+        delay: 10s
 
-    - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v1
-
-    - name: Log in to Docker Hub
-      run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
-
-    - name: Create Docker network
-      run: docker network create -d overlay --attachable loe_network || true
-
-    - name: Pull new images
-      run: docker compose pull
-
-    - name: Deploy stack
-      run: docker stack deploy -c docker-compose.yml loe_stack
-
-    - name: Prune unused images
-      run: echo 'y' | docker image prune -a
+networks:
+  loe_network:
+    external: true
