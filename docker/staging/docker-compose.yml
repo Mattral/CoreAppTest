@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
   web:
-    image: minhtetmyet/core-app
+    image: omdenaai/core-app:latest
     ports:
       - '3000:3000'
     networks:
@@ -21,7 +21,7 @@ services:
         delay: 10s
 
   partnerapp:
-    image: minhtetmyet/partner-app
+    image: omdenaai/partner-app:latest
     ports:
       - '4000:4000'
     networks:
